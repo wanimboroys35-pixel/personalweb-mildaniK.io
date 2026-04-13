@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - Mildani Kogoya</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+:root{
+  --primary:#1e3a8a;
+  --secondary:#38bdf8;
+  --dark:#0f172a;
+  --gradient:linear-gradient(135deg,#1e3a8a,#38bdf8);
+}
+body{background:var(--dark);color:white;}
+
+.admin-hero{
+  height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.admin-info h1{
+  font-size:2.5rem;
+  font-weight:900;
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.navbar{
+  background:#111;
+  padding:1rem;
+  display:flex;
+  justify-content:space-between;
+}
+
+.main{padding:2rem;}
+
+.upload-zone{
+  border:2px dashed #38bdf8;
+  padding:2rem;
+  text-align:center;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+.upload-btn{
+  margin-top:1rem;
+  padding:1rem;
+  width:100%;
+  border:none;
+  border-radius:50px;
+  background:#38bdf8;
+  color:white;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<section class="admin-hero">
+  <div class="admin-info">
+    <h1 id="adminName">Admin</h1>
+    <p>Portfolio Dashboard</p>
+  </div>
+</section>
+
+<nav class="navbar">
+  <h3>Dashboard</h3>
+  <button onclick="logout()">Logout</button>
+</nav>
+
+<main class="main">
+
+<div>
+  <h3>Total Post: <span id="totalPosts">0</span></h3>
+</div>
+
+<br>
+
+<div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+  <h2>Upload Foto</h2>
+  <input type="file" id="fileInput" multiple accept="image/*" hidden>
+  <textarea id="photo-desc" placeholder="Deskripsi foto"></textarea>
+  <button class="upload-btn" onclick="handleUpload(event)">UPLOAD</button>
+</div>
+
+<br>
+
+<canvas id="chart"></canvas>
+
+</main>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbze7rR9luWQc21-HahixWXsdAZS099Mqmam5jApDScpuc0WcWWgXtOR6wRMEoBVH7ZF/exec";
+
+/* ADMIN */
+if(!sessionStorage.getItem("adminName")){
+  sessionStorage.setItem("adminName","Mildani Admin");
+}
+document.getElementById("adminName").textContent = sessionStorage.getItem("adminName");
+
+/* LOAD DATA */
+async function loadData(){
+  const res = await fetch(API_URL);
+  const data = await res.json();
+
+  document.getElementById("totalPosts").textContent = data.length;
+
+  // chart
+  const ctx = document.getElementById('chart').getContext('2d');
+  new Chart(ctx,{
+    type:'line',
+    data:{
+      labels:data.map((_,i)=>"Post "+(i+1)),
+      datasets:[{
+        label:'Jumlah Post',
+        data:data.map((_,i)=>i+1),
+        borderColor:'#38bdf8',
+        fill:false
+      }]
+    }
+  });
+}
+
+/* UPLOAD */
+function handleUpload(e){
+  e.stopPropagation();
+
+  const files = document.getElementById('fileInput').files;
+  const desc = document.getElementById('photo-desc').value || "Foto";
+
+  if(files.length===0){
+    alert("Pilih foto dulu!");
+    return;
+  }
+
+  for(let file of files){
+    const reader = new FileReader();
+
+    reader.onload = async function(){
+      const base64 = reader.result;
+
+      await fetch(API_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          img:base64,
+          desc:desc
+        })
+      });
+    }
+
+    reader.readAsDataURL(file);
+  }
+
+  alert("✅ Upload berhasil!");
+  setTimeout(loadData,2000);
+}
+
+/* LOGOUT */
+function logout(){
+  sessionStorage.clear();
+  location.reload();
+}
+
+loadData();
+</script>
+
+</body>
+</html>

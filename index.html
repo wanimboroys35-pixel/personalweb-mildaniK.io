@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mildani Kogoya - Fotografer Alam Papua | International Photographer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+<style>
+* {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+:root {
+  --primary: #1e3a8a;
+  --secondary: #38bdf8;
+  --dark: #0f172a;
+  --light-bg: #f8fafc;
+  --light-text: #1e293b;
+  --light-card: rgba(255,255,255,0.95);
+  --light-border: rgba(0,0,0,0.1);
+  --light-shadow: rgba(0,0,0,0.1);
+  --gradient: linear-gradient(135deg, #1e3a8a, #38bdf8);
+}
+
+.light-mode {
+  --bg-primary: var(--light-bg);
+  --text-primary: var(--light-text);
+  transition: all 0.3s ease;
+}
+
+.light-mode body {
+  background: var(--light-bg);
+  color: var(--light-text);
+}
+
+.light-mode .navbar {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+}
+
+.light-mode .navbar .nav-links a {
+  color: var(--light-text);
+}
+
+.light-mode .navbar .logo {
+  color: var(--light-text);
+}
+
+.light-mode .nav-links a:hover {
+  color: var(--secondary);
+}
+
+.light-mode .hamburger span {
+  background: var(--light-text);
+}
+
+.light-mode .hero .overlay {
+  background: linear-gradient(rgba(248,250,252,0.3), rgba(248,250,252,0.1));
+}
+
+.light-mode .section {
+  background: var(--light-bg);
+}
+
+.light-mode .about-img::before {
+  background: var(--light-bg);
+}
+
+.light-mode .about-text p {
+  color: #64748b;
+}
+
+.light-mode .portfolio-item {
+  box-shadow: 0 20px 40px var(--light-shadow);
+}
+
+.light-mode .portfolio-overlay {
+  background: linear-gradient(transparent, rgba(30,41,59,0.95));
+  color: white;
+}
+
+.light-mode .upload-zone {
+  border-color: var(--secondary);
+  background: rgba(56,189,248,0.05);
+}
+
+.light-mode .skill-item {
+  background: var(--light-card);
+  border-color: var(--light-border);
+  color: var(--light-text);
+}
+
+.light-mode .contact-form {
+  background: var(--light-card);
+  border: 1px solid var(--light-border);
+}
+
+.light-mode .form-group input, 
+.light-mode .form-group textarea {
+  background: white;
+  border-color: var(--light-border);
+  color: var(--light-text);
+}
+
+.light-mode .form-group input::placeholder, 
+.light-mode .form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+.light-mode footer {
+  background: var(--light-card);
+  border-color: var(--light-border);
+  color: var(--light-text);
+}
+
+/* About read more */
+.about-content {
+  max-height: 300px;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  position: relative;
+  padding-bottom: 80px;
+  min-height: 220px;
+}
+
+.read-more-btn {
+  background: var(--gradient);
+  color: white !important;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(56,189,248,0.5);
+  white-space: nowrap;
+  min-width: 140px;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.light-mode .read-more-btn {
+  box-shadow: 0 6px 20px rgba(30,41,59,0.4);
+}
+
+.read-more-btn:hover {
+  transform: translateX(-50%) translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(56,189,248,0.7);
+}
+
+.light-mode .read-more-btn {
+  box-shadow: 0 8px 25px rgba(30,41,59,0.3);
+}
+
+.read-more-btn:hover {
+  transform: translateX(-50%) translateY(-2px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(56,189,248,0.6);
+}
+
+.about-content.expanded {
+  max-height: 1000px;
+}
+
+.about-full {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.about-full.hidden {
+  opacity: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.read-more-btn {
+  background: var(--gradient);
+  color: white;
+  border: 2px solid transparent;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(56,189,248,0.3);
+}
+
+.read-more-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s;
+}
+
+.read-more-btn:hover::before {
+  left: 100%;
+}
+
+.read-more-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(56,189,248,0.5);
+}
+
+.read-more-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.light-mode .read-more-btn {
+  background: var(--gradient);
+}
+
+.read-more-btn i {
+  transition: transform 0.3s;
+}
+
+.read-more-btn.active i {
+  transform: rotate(180deg);
+}
+
+body {
+  background: var(--dark);
+  color: white;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15,23,42,0.95);
+  backdrop-filter: blur(20px);
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: var(--secondary);
+}
+
+.hamburger {
+  display: none;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background: white;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.hamburger:hover span {
+  background: var(--secondary);
+}
+
+/* THEME TOGGLE */
+.theme-toggle {
+  position: relative;
+  width: 50px;
+  height: 30px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+  background: var(--secondary);
+  box-shadow: 0 0 20px rgba(56,189,248,0.5);
+}
+
+.light-mode .theme-toggle {
+  background: rgba(0,0,0,0.2);
+}
+
+
+/* HERO - Cinematic Slider */
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease 0.2s both;
+}
+
+.cta-primary, .cta-secondary {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 0.5rem;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.cta-primary {
+  background: var(--gradient);
+  color: white;
+  box-shadow: 0 15px 35px rgba(56,189,248,0.4);
+}
+
+.cta-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 45px rgba(56,189,248,0.6);
+}
+
+.cta-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid var(--secondary);
+}
+
+.cta-secondary:hover {
+  background: var(--secondary);
+  color: var(--dark);
+}
+
+/* SECTIONS */
+.section {
+  padding: 120px 5%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.maps-container {
+  position: relative;
+}
+
+.maps-container iframe {
+  transition: all 0.3s ease;
+}
+
+.maps-container:hover iframe {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+
+.about-img {
+  width: 100%;
+  border-radius: 30px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  position: relative;
+  padding: 8px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #f0932b, #eb4d4b);
+  background-size: 400% 400%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.about-img::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  background: var(--dark);
+  border-radius: 26px;
+  z-index: -1;
+}
+
+.about-text h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--secondary);
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #94a3b8;
+  margin-bottom: 2rem;
+}
+
+/* PORTFOLIO */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.portfolio-item {
+  position: relative;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  transition: all 0.4s;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.95));
+  padding: 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.4s;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.social-footer {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.like-btn, .comment-btn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.like-btn:hover {
+  background: #ff4757;
+  transform: scale(1.05);
+}
+
+.comment-btn:hover {
+  background: var(--secondary);
+  transform: scale(1.05);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  transform: translateY(0);
+}
+
+.portfolio-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-desc {
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+/* UPLOAD ZONE */
+.upload-zone {
+  border: 3px dashed var(--secondary);
+  border-radius: 20px;
+  padding: 4rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 3rem;
+}
+
+.upload-zone:hover {
+  background: rgba(56,189,248,0.1);
+  border-color: #0ea5e9;
+}
+
+.upload-icon {
+  font-size: 4rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.upload-text {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.upload-subtext {
+  color: #94a3b8;
+}
+
+/* SKILLS */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.skill-item {
+  background: rgba(255,255,255,0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.1);
+}
+
+.skill-icon {
+  font-size: 3rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.skill-name {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--secondary);
+}
+
+.skill-bar {
+  height: 8px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 4px;
+  width: 0%;
+  transition: width 2s ease;
+}
+
+/* CONTACT */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-info i {
+  font-size: 1.5rem;
+  color: var(--secondary);
+  margin-right: 1rem;
+}
+
+.contact-form {
+  background: rgba(255,255,255,0.05);
+  padding: 2.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  color: white;
+  font-family: inherit;
+  transition: 0.3s;
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--secondary);
+  background: rgba(255,255,255,0.15);
+}
+
+/* SOCIAL */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.social-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.4),
+    inset 0 2px 0 rgba(255,255,255,0.3);
+  border: 2px solid rgba(255,255,255,0.2);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: conic-gradient(#ff0099, #4433ff, #ff6b00, #00ff88, #ff0099);
+  border-radius: 50%;
+  z-index: -1;
+  padding: 2px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: spin 2s linear infinite reverse;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.social-icon i {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  transition: all 0.4s;
+}
+
+.social-icon:hover {
+  transform: translateY(-12px) scale(1.15) rotate(5deg);
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.6),
+    inset 0 2px 0 rgba(255,255,255,0.4);
+  filter: brightness(1.1);
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.6s;
+}
+
+.social-icon:hover::before {
+  left: 100%;
+}
+
+.social-icon.facebook { background: linear-gradient(135deg, #4267B2, #365899); }
+.social-icon.instagram { background: linear-gradient(135deg, #E4405F, #F77737); }
+.social-icon.whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); }
+.social-icon.tiktok { background: linear-gradient(135deg, #000, #010101); }
+
+.social-icon i {
+  transition: 0.3s;
+}
+
+.social-icon:hover i {
+  transform: scale(1.2);
+}
+
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 3rem 5%;
+  background: rgba(0,0,0,0.5);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 2%;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--dark);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    transform: translateX(-100%);
+    opacity: 1;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .nav-links.active {
+    transform: translateX(0);
+  }
+  
+  .nav-links a {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .about-grid, .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .about-text {
+    order: -1;
+  }
+  
+  .about-img {
+    order: 1;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section {
+    padding: 60px 3%;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .about-content {
+    max-height: 250px;
+    padding-bottom: 70px;
+  }
+  
+  .read-more-btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    bottom: 5px;
+  }
+  
+  .social-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .social-links {
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .about-text h3 {
+    font-size: 1.6rem;
+  }
+}
+#typing-text::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+</style>
+</head>
+
+<body data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="0">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">MDK</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+     <li><a href="login.html">Login</a></li>
+  </ul>
+  <!-- Dark/Light Toggle -->
+  <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">
+    <span class="toggle-icon">🌙</span>
+  </button>
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  
+</nav>
+
+<style>
+.theme-toggle {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(56,189,248,0.4);
+}
+
+.light-mode .theme-toggle {
+  background: rgba(0,0,0,0.1);
+  border-color: rgba(0,0,0,0.2);
+  color: var(--light-text);
+}
+
+.light-mode .theme-toggle:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
+}
+
+
+
+/* DARK MODE FIX */
+body {
+  background: var(--dark);
+  color: white;
+}
+
+.light-mode body {
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.light-mode .portfolio-overlay {
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+}
+</style>
+
+<!-- HERO SLIDER -->
+<section class="hero">
+  <div class="slider">
+    <div class="slide active" style="background-image: url('images/portopolio/1.jfif')"></div>
+    <div class="slide" style="background-image: url('images/portopolio/2.jfif')"></div>
+    <div class="slide" style="background-image: url('images/portopolio/3.jfif')"></div>
+  </div>
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1 data-aos="fade-up">Mildani Kogoya</h1>
+    <p class="hero-subtitle">
+  <span id="typing-text"></span>
+</p>
+    <div>
+      <a href="#portfolio" class="cta-primary" data-aos="fade-up" data-aos-delay="400">View Portfolio</a>
+      <a href="#contact" class="cta-secondary" data-aos="fade-up" data-aos-delay="500">Hire Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <h2 class="section-title" data-aos="fade-up">About Me</h2>
+  <div class="about-grid">
+    <img src="images/profil.jfif" alt="Mildani Kogoya" class="about-img" data-aos="zoom-in">
+<div class="about-text" data-aos="fade-left">
+      <h3>Fotografer Alam Papua</h3>
+      <div class="about-content">
+        <p>Saya adalah Mildani Kogoya, fotografer yang berdedikasi mengabadikan keindahan alam Papua. Saat ini menempuh S1 Sistem Informasi di UNINGRAD Papua, menggabungkan teknologi & kreativitas fotografi.</p>
+        <div class="about-full hidden">
+          <p>Saya adalah Mildani Kogoya, seorang fotografer yang memiliki dedikasi tinggi dalam mengabadikan keindahan alam Papua melalui lensa kamera. Setiap karya yang saya hasilkan merupakan wujud kecintaan saya terhadap kekayaan alam dan budaya Papua yang luar biasa—mulai dari pegunungan hijau yang megah hingga pantai-pantai eksotis yang memukau.</p>
+          <p>Saat ini, saya sedang menempuh pendidikan di Universitas Sains dan Teknologi (UNINGRAD Papua), dengan mengambil jurusan Sistem Informasi. Melalui bidang studi ini, saya tidak hanya mengembangkan kemampuan di dunia teknologi, tetapi juga mengintegrasikannya dengan kreativitas dalam fotografi untuk menghasilkan karya visual yang modern, inovatif, dan bernilai tinggi.</p>
+          <p>Dalam setiap proses pengambilan gambar, saya mengaplikasikan teknik fotografi terkini yang didukung oleh peralatan profesional. Bagi saya, fotografi bukan sekadar aktivitas mengambil gambar, melainkan sebuah seni dalam menyampaikan cerita—tentang keindahan alam, kehidupan, serta identitas budaya Papua yang autentik.</p>
+          <p>Saya percaya bahwa setiap foto memiliki makna yang mendalam. Melalui karya-karya saya, saya berkomitmen untuk memperkenalkan Papua kepada dunia sebagai tanah yang kaya akan keindahan, keunikan, dan sumber inspirasi yang tak terbatas.</p>
+        </div>
+        <button class="read-more-btn" id="read-more">Baca Selengkapnya <i class="fas fa-chevron-down"></i></button>
+      </div>
+      
+      <div class="social-links" data-aos="fade-up" data-aos-delay="400">
+        <a href="https://www.facebook.com/Daniphotogrhafer" target="_blank" class="social-icon facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/milput_kogoya_/" target="_blank" class="social-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/6282251764569" class="social-icon whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.tiktok.com/@user2482560304462" target="_blank" class="social-icon tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="section">
+  <h2 class="section-title" data-aos="fade-up">Portfolio</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+      <img src="./images/portopolio/1.jfif" alt="Portfolio Papua 1" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="portfolio-overlay">
+        <h3 class="portfolio-title">Danau Sentani</h3>
+        <p class="portfolio-desc">Sunrise golden hour Papua</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
+      <img src="./images/portopolio/2.jfif" alt="Portfolio Papua 2" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="portfolio-overlay">
+        <h3 class="portfolio-title">Bukit Phafont</h3>
+        <p class="portfolio-desc">Jayapura city & nature</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-aos="fade-up" data-aos-delay="300">
+      <img src="./images/portopolio/3.jfif" alt="Portfolio Papua 3" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="portfolio-overlay">
+        <h3 class="portfolio-title">Pantai Tropis</h3>
+        <p class="portfolio-desc">Papua sunset beach</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <h2 class="section-title" data-aos="fade-up">Photography Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
+      <i class="fas fa-camera-retro skill-icon"></i>
+      <h3 class="skill-name">Canon EOS R5</h3>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: 95%;"></div>
+      </div>
+    </div>
+    <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
+      <i class="fas fa-magic skill-icon"></i>
+      <h3 class="skill-name">Adobe Lightroom</h3>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: 90%;"></div>
+      </div>
+    </div>
+    <div class="skill-item" data-aos="fade-up" data-aos-delay="300">
+      <i class="fas fa-edit skill-icon"></i>
+      <h3 class="skill-name">Adobe Photoshop</h3>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: 92%;"></div>
+      </div>
+    </div>
+    <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
+      <i class="fas fa-paint-brush skill-icon"></i>
+      <h3 class="skill-name">Landscape Photography</h3>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: 98%;"></div>
+      </div>
+    </div>
+    <div class="skill-item" data-aos="fade-up" data-aos-delay="500">
+      <i class="fas fa-snowflake skill-icon"></i>
+      <h3 class="skill-name">Long Exposure</h3>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: 88%;"></div>
+      </div>
+    </div>
+    <div class="skill-item" data-aos="fade-up" data-aos-delay="600">
+      <i class="fas fa-drone skill-icon"></i>
+      <h3 class="skill-name">Drone Photography</h3>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: 85%;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2 class="section-title" data-aos="fade-up">Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-info" data-aos="fade-right">
+      <h3 data-aos="fade-up" data-aos-delay="100">Let's Create Magic</h3>
+      <p data-aos="fade-up" data-aos-delay="200">Ready to capture your vision? Let's collaborate on the next masterpiece.</p>
+      <div data-aos="fade-up" data-aos-delay="300">
+        <p><i class="fas fa-map-marker-alt"></i> Papua, Indonesia</p>
+        <p><i class="fas fa-phone"></i> WhatsApp Chat</p>
+        <p><i class="fas fa-envelope"></i> mildani@email.com</p>
+      </div>
+      <div class="social-links" data-aos="fade-up" data-aos-delay="400">
+        <a href="https://www.facebook.com/Daniphotogrhafer" target="_blank" class="social-icon facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/milput_kogoya_/" target="_blank" class="social-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/6282251764569" class="social-icon whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+        <a href="https://www.tiktok.com/@user2482560304462" target="_blank" class="social-icon tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+
+      </div>
+    </div>
+    <form class="contact-form" data-aos="fade-left">
+      <div class="form-group">
+        <input type="text" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Your Email" required>
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Project Type">
+      </div>
+      <div class="form-group">
+        <textarea rows="5" placeholder="Tell me about your vision..." required></textarea>
+      </div>
+      <button type="submit" class="cta-primary" style="width:100%;">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 Mildani Kogoya | Papua Nature Photographer | All Rights Reserved</p>
+</footer>
+<script>
+const texts = [
+  "Fotografer Alam Papua",
+  "National Landscape Photographer",
+  "Papua Nature Storyteller",
+  "Visual Creator from Papua"
+];
+
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
+
+// Typing effect
+function type() {
+  if (count === texts.length) {
+    count = 0;
+  }
+
+  currentText = texts[count];
+  letter = currentText.slice(0, ++index);
+
+  document.getElementById("typing-text").textContent = letter;
+
+  if (letter.length === currentText.length) {
+    setTimeout(deleteText, 1500); // tunggu sebelum hapus
+  } else {
+    setTimeout(type, 80); // kecepatan ketik
+  }
+}
+
+// Delete effect
+function deleteText() {
+  letter = currentText.slice(0, --index);
+  document.getElementById("typing-text").textContent = letter;
+
+  if (letter.length === 0) {
+    count++;
+    setTimeout(type, 300);
+  } else {
+    setTimeout(deleteText, 40); // kecepatan hapus
+  }
+}
+
+// Start animation
+type();
+</script>
+<script>
+// OLD LOCALSTORAGE SCRIPT DISABLED - ADMIN ONLY VIA admin.html
+// const dropZone = document.getElementById("drop-zone");
+// const fileInput = document.getElementById("file-upload");
+// const descInput = document.getElementById("photo-desc");
+// portfolioGrid already declared above
+  
+
+// LOAD DATA DARI LOCAL STORAGE
+window.onload = () => {
+  const data = JSON.parse(localStorage.getItem("portfolio")) || [];
+  data.forEach(item => createCard(item.img, item.desc, item.likes));
+};
+
+// CLICK UPLOAD
+dropZone.addEventListener("click", () => fileInput.click());
+
+// HANDLE FILE
+fileInput.addEventListener("change", (e) => {
+  handleFiles(e.target.files);
+});
+
+// DRAG DROP
+dropZone.addEventListener("dragover", e => e.preventDefault());
+
+dropZone.addEventListener("drop", e => {
+  e.preventDefault();
+  handleFiles(e.dataTransfer.files);
+});
+
+// GENERATE AI CAPTION
+function generateCaption() {
+  const captions = [
+    "Keindahan alam Papua yang masih alami.",
+    "Cahaya matahari menyentuh bumi Papua.",
+    "Momen tenang di tengah alam liar.",
+    "Surga kecil yang tersembunyi di Papua.",
+    "Harmoni alam dan kehidupan."
+  ];
+  return captions[Math.floor(Math.random() * captions.length)];
+}
+
+// HANDLE FILE UPLOAD
+function handleFiles(files) {
+  Array.from(files).forEach(file => {
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const desc = descInput.value.trim() || generateCaption();
+
+      createCard(e.target.result, desc, 0);
+      saveData(e.target.result, desc, 0);
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+  descInput.value = ""; // reset
+}
+
+// BUAT CARD PORTFOLIO
+function createCard(img, desc, likes) {
+  const div = document.createElement("div");
+  div.className = "portfolio-item";
+
+  div.innerHTML = `
+    <img src="${img}">
+    <div class="portfolio-overlay">
+      <h3 class="portfolio-title">My Photo</h3>
+      <p class="portfolio-desc">${desc}</p>
+      <div class="social-footer">
+        <button class="like-btn">❤️ <span>${likes}</span></button>
+      </div>
+    </div>
+  `;
+
+  // LIKE BUTTON
+  const likeBtn = div.querySelector(".like-btn");
+  likeBtn.onclick = () => {
+    let span = likeBtn.querySelector("span");
+    span.innerText = parseInt(span.innerText) + 1;
+    updateStorage();
+  };
+
+  portfolioGrid.prepend(div);
+}
+
+// SIMPAN KE LOCAL STORAGE
+function saveData(img, desc, likes) {
+  const data = JSON.parse(localStorage.getItem("portfolio")) || [];
+  data.unshift({ img, desc, likes });
+  localStorage.setItem("portfolio", JSON.stringify(data));
+}
+
+// UPDATE LIKE KE STORAGE
+function updateStorage() {
+  const items = document.querySelectorAll(".portfolio-item");
+  const data = [];
+
+  items.forEach(item => {
+    const img = item.querySelector("img").src;
+    const desc = item.querySelector(".portfolio-desc").innerText;
+    const likes = parseInt(item.querySelector("span").innerText);
+
+    data.push({ img, desc, likes });
+  });
+
+  localStorage.setItem("portfolio", JSON.stringify(data));
+}
+
+</script>
+<!-- Firebase REMOVED - Static portfolio only -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+AOS.init();
+
+
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  document.querySelector('.navbar').style.background = window.scrollY > 100 
+    ? 'rgba(15,23,42,0.98)' : 'rgba(15,23,42,0.95)';
+});
+
+// Hero slider cinematic
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+function nextSlide() {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+}
+
+setInterval(nextSlide, 5000);
+
+// Professional hamburger toggle
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.onclick = () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
+};
+
+// Close menu on link click (mobile)
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.onclick = () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+  };
+});
+
+
+// Form submit
+document.querySelector('.contact-form').onsubmit = (e) => {
+  e.preventDefault();
+  alert('📧 Message sent! I will contact you soon.');
+};
+
+// Dark/Light mode toggle & About read more
+document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+  const themeIcon = document.querySelector('.toggle-icon');
+  
+  if (localStorage.getItem('theme') === 'light' || 
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+    body.classList.add('light-mode');
+    themeIcon.textContent = '☀️';
+  }
+  
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    if (body.classList.contains('light-mode')) {
+      themeIcon.textContent = '☀️';
+      localStorage.setItem('theme', 'light');
+    } else {
+      themeIcon.textContent = '🌙';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+  
+  // About read more
+  const readMoreBtn = document.getElementById('read-more');
+  const aboutContent = document.querySelector('.about-content');
+  const aboutFull = document.querySelector('.about-full');
+  
+  readMoreBtn.addEventListener('click', () => {
+    const isExpanded = aboutContent.classList.contains('expanded');
+    
+    if (isExpanded) {
+      aboutContent.classList.remove('expanded');
+      aboutFull.classList.add('hidden');
+      readMoreBtn.innerHTML = 'Baca Lagi <i class="fas fa-chevron-down"></i>';
+      readMoreBtn.classList.remove('active');
+      readMoreBtn.querySelector('i').style.transform = 'rotate(0deg)';
+    } else {
+      aboutContent.classList.add('expanded');
+      setTimeout(() => {
+        aboutFull.classList.remove('hidden');
+        readMoreBtn.innerHTML = 'Tutup <i class="fas fa-chevron-up"></i>';
+        readMoreBtn.classList.add('active');
+        readMoreBtn.querySelector('i').style.transform = 'rotate(0deg)';
+      }, 200);
+    }
+  });
+});
+
+
+
+// Upload functionality (Firebase simulation)
+document.getElementById('file-upload').onchange = (e) => {
+  Array.from(e.target.files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      // Simulate AI caption
+      const captions = ['Stunning Papua landscape', 'Golden hour magic', 'Nature masterpiece'];
+      const aiCaption = captions[Math.floor(Math.random() * captions.length)];
+      
+      // Add to portfolio
+      const newItem = document.createElement('div');
+      newItem.className = 'portfolio-item';
+      newItem.innerHTML = `
+        <img src="${ev.target.result}" alt="${aiCaption}">
+        <div class="portfolio-overlay">
+          <h3>New Upload</h3>
+          <p>AI Caption: ${aiCaption}</p>
+        </div>
+      `;
+      document.querySelector('.portfolio-grid').prepend(newItem);
+    };
+    reader.readAsDataURL(file);
+  });
+};
+
+
+</script>
+
+<!-- TAMBAHKAN DI BAGIAN PALING BAWAH SEBELUM </body> -->
+<!-- Google Sheets REMOVED - Pure static portfolio -->
+
+</body>
+</html>

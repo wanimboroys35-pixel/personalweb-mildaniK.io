@@ -1,0 +1,29 @@
+[
+  {
+    "ID": 1,
+    "Timestamp": "2024-01-01T00:00:00Z",
+    "Image_URL": "https://via.placeholder.com/800x600?text=Sample+1",
+    "Title": "Sunrise Sentani",
+    "Description": "Beautiful sunrise over Danau Sentani",
+    "Likes": 42,
+    "Video_URL": ""
+  },
+  {
+    "ID": 2,
+    "Timestamp": "2024-01-02T00:00:00Z",
+    "Image_URL": "https://via.placeholder.com/800x600?text=Sample+2",
+    "Title": "Bukit Phafont",
+    "Description": "Panoramic view from Jayapura hills",
+    "Likes": 28,
+    "Video_URL": ""
+  },
+  {
+    "ID": 3,
+    "Timestamp": "2024-01-03T00:00:00Z",
+    "Image_URL": "https://via.placeholder.com/800x600?text=Sample+3",
+    "Title": "Papua Beach",
+    "Description": "Tropical paradise sunset",
+    "Likes": 65,
+    "Video_URL": ""
+  }
+]
