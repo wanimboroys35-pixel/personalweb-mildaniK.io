@@ -1010,7 +1010,13 @@ footer {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+  .about-full {
+  display: none;
+}
+
+.about-full.show {
+  display: block;
+}
   .about-text {
     order: -1;
   }
@@ -1058,7 +1064,14 @@ footer {
   content: "|";
   animation: blink 1s infinite;
 }
+.about-full {
+  display: none;
+  transition: all 0.3s ease;
+}
 
+.about-full.show {
+  display: block;
+}
 @keyframes blink {
   0% {opacity: 1;}
   50% {opacity: 0;}
@@ -1460,25 +1473,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const aboutContent = document.querySelector('.about-content');
   const aboutFull = document.querySelector('.about-full');
   
-  readMoreBtn.addEventListener('click', () => {
-    const isExpanded = aboutContent.classList.contains('expanded');
-    
-    if (isExpanded) {
-      aboutContent.classList.remove('expanded');
-      aboutFull.classList.add('hidden');
-      readMoreBtn.innerHTML = 'Baca Lagi <i class="fas fa-chevron-down"></i>';
-      readMoreBtn.classList.remove('active');
-      readMoreBtn.querySelector('i').style.transform = 'rotate(0deg)';
-    } else {
-      aboutContent.classList.add('expanded');
-      setTimeout(() => {
-        aboutFull.classList.remove('hidden');
-        readMoreBtn.innerHTML = 'Tutup <i class="fas fa-chevron-up"></i>';
-        readMoreBtn.classList.add('active');
-        readMoreBtn.querySelector('i').style.transform = 'rotate(0deg)';
-      }, 200);
-    }
-  });
+ readMoreBtn.addEventListener('click', () => {
+  const isOpen = aboutContent.classList.contains('expanded');
+
+  if (isOpen) {
+    aboutContent.classList.remove('expanded');
+    aboutFull.classList.remove('show');
+    readMoreBtn.innerHTML = 'Baca Selengkapnya <i class="fas fa-chevron-down"></i>';
+  } else {
+    aboutContent.classList.add('expanded');
+    aboutFull.classList.add('show');
+    readMoreBtn.innerHTML = 'Tutup <i class="fas fa-chevron-up"></i>';
+  }
+});
 });
 
 
