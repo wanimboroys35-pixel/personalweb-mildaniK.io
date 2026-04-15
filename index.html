@@ -353,7 +353,8 @@ body {
 
 /* HERO - Cinematic Slider */
 .hero {
-  height: 100vh;
+  min-height: 100dvh;
+  height: 90vh;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -491,6 +492,8 @@ body {
 
 .about-img {
   width: 100%;
+  max-width: 100vw;
+  height: auto;
   border-radius: 30px;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4);
   position: relative;
@@ -534,18 +537,26 @@ body {
 /* PORTFOLIO */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
 .portfolio-item {
   position: relative;
-  height: 400px;
+  height: 280px;
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   transition: all 0.4s;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: 100%;
+  transition: transform 0.5s;
 }
 
 .portfolio-item:hover {
@@ -1102,22 +1113,37 @@ body {
     <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
       <img src="./images/portopolio/1.jfif" alt="Portfolio Papua 1" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <div class="portfolio-overlay">
-        <h3 class="portfolio-title">Danau Sentani</h3>
-        <p class="portfolio-desc">Sunrise golden hour Papua</p>
+        <h3 class="portfolio-title">🌿 Gambar 1 (Daun Hijau di Dahan)</h3>
+        <p class="portfolio-desc">Makna & kesan:
+
+Melambangkan kehidupan, pertumbuhan, dan harapan baru
+Warna hijau identik dengan alam, kesegaran, dan ketenangan
+Fokus pada daun menunjukkan keindahan hal kecil dalam kehidupan
+Cahaya lembut memberi kesan damai dan natural</p>
       </div>
     </div>
     <div class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
       <img src="./images/portopolio/2.jfif" alt="Portfolio Papua 2" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <div class="portfolio-overlay">
-        <h3 class="portfolio-title">Bukit Phafont</h3>
-        <p class="portfolio-desc">Jayapura city & nature</p>
+        <h3 class="portfolio-title">🌳 Gambar 2 (Pohon Kering di Pinggir Laut)</h3>
+        <p class="portfolio-desc">Makna & kesan:
+
+Melambangkan kesepian, ketahanan, dan kekuatan dalam kesendirian
+Pohon yang masih berdiri walau kering = keteguhan menghadapi kehidupan
+Laut luas memberi kesan kebebasan, namun juga kesunyian
+Komposisi sederhana membuat suasana terasa emosional dan reflektif</p>
       </div>
     </div>
     <div class="portfolio-item" data-aos="fade-up" data-aos-delay="300">
       <img src="./images/portopolio/3.jfif" alt="Portfolio Papua 3" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <div class="portfolio-overlay">
-        <h3 class="portfolio-title">Pantai Tropis</h3>
-        <p class="portfolio-desc">Papua sunset beach</p>
+        <h3 class="portfolio-title">🌫️ Gambar 3 (Kota Berselimut Kabut)</h3>
+        <p class="portfolio-desc">Makna & kesan:
+
+Kabut melambangkan ketidakjelasan, misteri, atau perjalanan hidup yang belum pasti
+Suasana pagi bisa berarti awal yang baru
+Kota di bawah kabut menggambarkan kehidupan manusia yang penuh dinamika tapi sering tersembunyi
+Memberi nuansa tenang, dingin, dan sedikit melankolis/p>
       </div>
     </div>
 
